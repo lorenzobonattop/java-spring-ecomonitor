@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import user.model.enums.Role;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public abstract class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,9 @@ public abstract class User {
     @JsonIgnore
     @Column(nullable = false)
     private String password;
+
+    @Column
+    private Role role;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -78,6 +82,14 @@ public abstract class User {
 
     public void changePassword(String newPassword) {
         this.password = newPassword;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -1,4 +1,6 @@
 package user.model.DTO;
 
-public record UserDTO(Long id, String name, String email) {
+import user.model.enums.Role;
+
+public record UserDTO(Long id, String name, String email, Role role) {
 }

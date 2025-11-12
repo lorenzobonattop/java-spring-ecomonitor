@@ -86,8 +86,8 @@ public class User {
         return password;
     }
 
-    public void changePassword(String newPassword) {
-        this.password = newPassword;
+    public void setPassword(String encodedPassword) {
+        this.password = encodedPassword;
     }
 
     public Role getRole() {
